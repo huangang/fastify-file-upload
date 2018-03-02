@@ -1,0 +1,25 @@
+{
+  "name": "fastify-file-upload",
+  "version": "0.0.1",
+  "description": "file upload plugin for Fastify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangang/fastify-file-upload.git"
+  },
+  "keywords": [
+    "fastify",
+    "fileUpload",
+    "multipart",
+    "form"
+  ],
+  "author": "huangang <huangang.zhang@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express-fileupload": "^0.4.0",
+    "fastify-plugin": "^0.2.2"
+  }
+}
