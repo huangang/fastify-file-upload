@@ -36,3 +36,10 @@ fastify.listen(3000, err => {
 })
 ```
 
+## Using Busboy Options
+```js
+fastify.register(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
+```
+### [Available Options](https://github.com/richardgirges/express-fileupload#available-options)

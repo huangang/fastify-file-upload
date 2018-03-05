@@ -1,7 +1,9 @@
 'use strict'
 
 const fastify = require('fastify')()
-fastify.register(require('.'))
+fastify.register(require('.'), {
+  limits: { fileSize: 50 * 1024 * 1024 },
+})
 
 fastify.post('/upload', function (req, reply) {
   const files = req.raw.files

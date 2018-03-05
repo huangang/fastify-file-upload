@@ -1,6 +1,6 @@
 {
   "name": "fastify-file-upload",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "file upload plugin for Fastify",
   "main": "index.js",
   "scripts": {

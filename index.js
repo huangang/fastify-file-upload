@@ -11,7 +11,10 @@ function setMultipart (req, done) {
 
 function fastifyUpload (fastify, options, done) {
   fastify.addContentTypeParser('multipart', setMultipart)
-  fastify.use(fileUpload());
+
+  options = options || {};
+  fastify.use(fileUpload(options));
+
   done()
 }
 
