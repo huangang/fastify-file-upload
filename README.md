@@ -2,6 +2,8 @@
 
 Fastify plugin to upload file.
 
+[![Build Status](https://travis-ci.org/huangang/fastify-file-upload.svg?branch=master)](https://travis-ci.org/huangang/fastify-file-upload)
+[![NPM version](https://img.shields.io/npm/v/fastify-file-upload.svg?style=flat)](https://www.npmjs.com/package/fastify-file-upload)
 ## Install
 ```
 npm i fastify-file-upload --save
