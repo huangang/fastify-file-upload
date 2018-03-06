@@ -52,13 +52,14 @@ test('upload file', function (t) {
       res.resume()
       res.on('end', () => {
         t.pass('res ended successfully')
-        fastify.close(function () {})
+        t.end()
       })
     })
 
     pump(form, req)
 
   })
+
 
 })
 
