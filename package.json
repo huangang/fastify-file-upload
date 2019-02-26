@@ -20,10 +20,10 @@
   "license": "MIT",
   "dependencies": {
     "express-fileupload": "^1.0.0",
-    "fastify-plugin": "^1.2.1"
+    "fastify-plugin": "^1.5.0"
   },
   "devDependencies": {
-    "fastify": "^1.13.0",
+    "fastify": "^2.0.0",
     "form-data": "^2.3.2",
     "pump": "^3.0.0",
     "tap": "^11.1.1"
