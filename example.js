@@ -2,14 +2,14 @@
 
 const fastify = require('fastify')()
 fastify.register(require('.'), {
-  limits: { fileSize: 50 * 1024 * 1024 },
+  limits: { fileSize: 50 * 1024 * 1024 }
 })
 
 fastify.post('/upload', function (req, reply) {
   const files = req.raw.files
   console.log(files)
-  let fileArr = []
-  for(let key in files){
+  const fileArr = []
+  for (const key in files) {
     fileArr.push({
       name: files[key].name,
       mimetype: files[key].mimetype

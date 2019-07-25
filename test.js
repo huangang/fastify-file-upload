@@ -7,7 +7,6 @@ const fs = require('fs')
 const filePath = path.join(__dirname, 'README.md')
 const pump = require('pump')
 
-
 test('upload file', function (t) {
   const fastify = require('fastify')()
   t.tearDown(fastify.close.bind(fastify))
@@ -17,11 +16,11 @@ test('upload file', function (t) {
   fastify.post('/upload', function (req, reply) {
     const files = req.raw.files
     if (!files) {
-      return reply.code(400).send('No files were uploaded.');
-    }else {
-      let testFile = files.testFile;
+      return reply.code(400).send('No files were uploaded.')
+    } else {
+      const testFile = files.testFile
 
-      t.equal(testFile.name , 'README.md')
+      t.equal(testFile.name, 'README.md')
 
       return reply.send('file upload success')
     }
@@ -31,23 +30,21 @@ test('upload file', function (t) {
     if (err) throw err
     console.log(`server listening on ${fastify.server.address().port}`)
 
-
-    let form = new FormData()
-    let opts = {
+    const form = new FormData()
+    const opts = {
       protocol: 'http:',
       hostname: 'localhost',
       port: fastify.server.address().port,
       path: '/upload',
       headers: form.getHeaders(),
-      method: 'POST',
+      method: 'POST'
     }
 
-
-    let rs = fs.createReadStream(filePath)
+    const rs = fs.createReadStream(filePath)
     form.append('testFile', rs)
     form.append('hello', 'world')
 
-    let req = http.request(opts, (res) => {
+    const req = http.request(opts, (res) => {
       t.equal(res.statusCode, 200)
       res.resume()
       res.on('end', () => {
@@ -57,9 +54,5 @@ test('upload file', function (t) {
     })
 
     pump(form, req)
-
   })
-
-
 })
-

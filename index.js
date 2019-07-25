@@ -2,7 +2,7 @@
 
 const fp = require('fastify-plugin')
 const kMultipart = Symbol('multipart')
-const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload')
 
 function setMultipart (req, done) {
   req[kMultipart] = true
@@ -12,8 +12,8 @@ function setMultipart (req, done) {
 function fastifyUpload (fastify, options, done) {
   fastify.addContentTypeParser('multipart', setMultipart)
 
-  options = options || {};
-  fastify.use(fileUpload(options));
+  options = options || {}
+  fastify.use(fileUpload(options))
 
   done()
 }
