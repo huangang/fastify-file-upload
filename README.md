@@ -37,6 +37,26 @@ fastify.listen(3000, err => {
   console.log(`server listening on ${fastify.server.address().port}`)
 })
 ```
+## Use Schema Demo (fastify version >= 2)
+``` js
+fastify.post('/uploadSchema', {
+  schema: {
+    summary: 'upload file',
+    body: {
+      type: 'object',
+      properties: {
+        file: { type: 'object' }
+      },
+      required: ['file']
+    }
+  },
+  handler: (request, reply) => {
+    const file = request.body.file
+    console.log(file)
+    reply.send({ file })
+  }
+})
+```
 
 ## Using Busboy Options
 ```js

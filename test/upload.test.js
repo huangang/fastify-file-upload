@@ -4,17 +4,17 @@ const path = require('path')
 const FormData = require('form-data')
 const http = require('http')
 const fs = require('fs')
-const filePath = path.join(__dirname, 'README.md')
+const filePath = path.join(__dirname, '../README.md')
 const pump = require('pump')
 
 test('upload file', function (t) {
   const fastify = require('fastify')()
   t.tearDown(fastify.close.bind(fastify))
 
-  fastify.register(require('.'))
+  fastify.register(require('..'))
 
-  fastify.post('/upload', function (req, reply) {
-    const files = req.raw.files
+  fastify.post('/upload', function (request, reply) {
+    const files = request.raw.files
     if (!files) {
       return reply.code(400).send('No files were uploaded.')
     } else {

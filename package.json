@@ -1,10 +1,10 @@
 {
   "name": "fastify-file-upload",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "file upload plugin for Fastify",
   "main": "index.js",
   "scripts": {
-    "test": "tap test.js"
+    "test": "tap test/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,12 @@
   "author": "huangang <huangang.zhang@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express-fileupload": "^1.0.0",
-    "fastify-plugin": "^1.5.0"
+    "express-fileupload": "^1.1.5",
+    "fastify-plugin": "^1.6.0"
   },
   "devDependencies": {
-    "fastify": "^2.0.0",
-    "form-data": "^2.3.2",
+    "fastify": "^2.7.1",
+    "form-data": "^2.5.0",
     "pump": "^3.0.0",
     "tap": "^11.1.1"
   }
