@@ -16,10 +16,12 @@ function fastifyUpload (fastify, options, done) {
   fastify.use(fileUpload(options))
 
   fastify.addHook('preValidation', (request, reply, done) => {
-    if (request.raw && request.raw.files) {
+    if (request.raw) {
       !request.body && (request.body = request.raw.body || {})
-      for (const key in request.raw.files) {
-        request.body[key] = request.raw.files[key]
+      if (request.raw.files) {
+        for (const key in request.raw.files) {
+          request.body[key] = request.raw.files[key]
+        }
       }
     }
     done()
