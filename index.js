@@ -4,8 +4,8 @@ const fp = require('fastify-plugin')
 const kMultipart = Symbol('multipart')
 const fileUpload = require('express-fileupload')
 
-function setMultipart (req, done) {
-  req[kMultipart] = true
+function setMultipart (request, payload, done) {
+  request[kMultipart] = true
   done()
 }
 
@@ -13,7 +13,13 @@ function fastifyUpload (fastify, options, done) {
   fastify.addContentTypeParser('multipart', setMultipart)
 
   options = options || {}
-  fastify.use(fileUpload(options))
+  try {
+    fastify.use(fileUpload(options))
+  } catch (e) {
+    fastify.register(require('middie')).then(() => {
+      fastify.use(fileUpload(options))
+    })
+  }
 
   fastify.addHook('preValidation', (request, reply, done) => {
     if (request.raw) {
@@ -30,6 +36,6 @@ function fastifyUpload (fastify, options, done) {
 }
 
 module.exports = fp(fastifyUpload, {
-  fastify: '>= 2.0.0',
+  fastify: '>=3.0.0',
   name: 'fastify-file-upload'
 })
