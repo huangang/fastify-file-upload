@@ -21,7 +21,8 @@
   "dependencies": {
     "express-fileupload": "^1.1.6",
     "fastify-plugin": "^2.0.0",
-    "middie": "^5.1.0"
+    "middie": "^5.1.0",
+    "@types/node": "^16.11.0"
   },
   "devDependencies": {
     "fastify": "^3.0.0",
