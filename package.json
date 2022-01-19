@@ -1,6 +1,6 @@
 {
   "name": "fastify-file-upload",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "file upload plugin for Fastify",
   "main": "index.js",
   "scripts": {
@@ -19,10 +19,11 @@
   "author": "huangang <huangang.zhang@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@types/express-fileupload": "^1.2.2",
+    "@types/node": "^16.11.0",
     "express-fileupload": "^1.1.6",
     "fastify-plugin": "^2.0.0",
-    "middie": "^5.1.0",
-    "@types/node": "^16.11.0"
+    "middie": "^5.1.0"
   },
   "devDependencies": {
     "fastify": "^3.0.0",
