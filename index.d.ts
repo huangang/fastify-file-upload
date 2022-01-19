@@ -8,7 +8,7 @@ declare module 'http' {
 }
 declare module 'http2' {
     interface Http2ServerRequest {
-        files?: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
+        files: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
     }
 }
 
