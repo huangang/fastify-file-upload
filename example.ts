@@ -1,3 +1,4 @@
+import fileUpload from "express-fileupload";
 import fastifyServer from "fastify"
 import data from ".";
 
@@ -7,22 +8,18 @@ fastify.register(data, {
 })
 
 fastify.post('/upload', function (req, reply) {
-  // @ts-ignore
-  const files = Array(req.raw.files)
-
-  // for fix error run yarn add @types/node or npm install @types/node
-  console.log(files)
   const fileArr = []
-  for (const key in files) {
+  for (const key in req.raw.files) {
+    const file = req.raw.files[key] as fileUpload.UploadedFile;
     fileArr.push({
-      name: files[key].name,
-      mimetype: files[key].mimetype
+      name: file.name,
+      mimetype: file.mimetype
     })
   }
   reply.send(fileArr)
 });
 
-fastify.post<{Body: {file?: any}}>('/uploadSchema', {
+fastify.post<{Body: {file?: fileUpload.UploadedFile}}>('/uploadSchema', {
   schema: {
     body: {
       type: 'object',
@@ -34,8 +31,6 @@ fastify.post<{Body: {file?: any}}>('/uploadSchema', {
   },
   handler: (request, reply) => {
     const file = request.body.file
-
-    // for fix error run yarn add @types/node or npm install @types/node
     console.log(file)
     reply.send({ file })
   }

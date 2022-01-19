@@ -1,7 +1,18 @@
-import { FastifyInstance, FastifyPluginCallback, FastifyPluginOptions, FastifyRequest } from "fastify";
-import { Server } from "http";
+import fileUpload from 'express-fileupload';
+import { FastifyPlugin } from 'fastify';
 
-declare function setMultipart (request: FastifyRequest, payload: any, done: () => void): void;
-declare function fastifyUpload (fastify: FastifyInstance, options: any, done: () => void): void;
+declare module 'http' {
+    interface IncomingMessage {
+        files: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
+    }
+}
+declare module 'http2' {
+    interface Http2ServerRequest {
+        files: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
+    }
+}
 
-declare export default (): FastifyPluginCallback<FastifyPluginOptions, Server> => {};
+declare function fastifyUpload (fastify: FastifyInstance, options: fileUpload.Options = {}, done: () => void): void;
+
+const fastifyUploadFile: FastifyPlugin<fileUpload.Options>;
+export default fastifyUploadFile;
