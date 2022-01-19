@@ -10,8 +10,7 @@ fastify.register(data, {
 fastify.post('/upload', function (req, reply) {
   const fileArr = []
   for (const key in req.raw.files) {
-    if(!req.raw.files[key]) continue;
-    const file = req.raw.files[key];
+    const file = req.raw.files[key] as fileUpload.UploadedFile;
     fileArr.push({
       name: file.name,
       mimetype: file.mimetype

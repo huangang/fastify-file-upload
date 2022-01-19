@@ -1,9 +1,14 @@
-import fileUpload, { UploadedFile } from 'express-fileupload';
+import fileUpload from 'express-fileupload';
 import { FastifyPlugin } from 'fastify';
 
 declare module 'http' {
     interface IncomingMessage {
-        files?: fileUpload.UploadedFile[string];
+        files: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
+    }
+}
+declare module 'http2' {
+    interface Http2ServerRequest {
+        files?: Record<string, fileUpload.UploadedFile | fileUpload.UploadedFile[] | undefined>;
     }
 }
 
