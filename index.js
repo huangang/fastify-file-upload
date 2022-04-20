@@ -16,7 +16,9 @@ function fastifyUpload (fastify, options, done) {
   try {
     fastify.use(fileUpload(options))
   } catch (e) {
-    fastify.register(require('middie')).then(() => {
+    Promise.all([
+      fastify.register(require('middie'))
+    ]).then(() => {
       fastify.use(fileUpload(options))
     })
   }

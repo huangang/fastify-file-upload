@@ -41,7 +41,7 @@ fastify.post<{Body: {file?: any}}>('/uploadSchema', {
   }
 })
 
-fastify.listen(3000, (err, address) => {
+fastify.listen(8080, '127.0.0.1', (err, address) => {
   if (err) throw err
 
   // for fix error run yarn add @types/node or npm install @types/node

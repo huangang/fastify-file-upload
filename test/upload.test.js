@@ -9,7 +9,7 @@ const pump = require('pump')
 
 test('upload file', function (t) {
   const fastify = require('fastify')()
-  t.tearDown(fastify.close.bind(fastify))
+  t.teardown(fastify.close.bind(fastify))
 
   fastify.register(require('..'))
 

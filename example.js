@@ -1,6 +1,6 @@
 'use strict'
 
-const fastify = require('fastify')()
+const fastify = require('fastify')({ logger: true })
 fastify.register(require('.'), {
   limits: { fileSize: 50 * 1024 * 1024 }
 })
@@ -36,7 +36,10 @@ fastify.post('/uploadSchema', {
   }
 })
 
-fastify.listen(3000, err => {
-  if (err) throw err
-  console.log(`server listening on ${fastify.server.address().port}`)
+fastify.listen(3000, function (err, address) {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+  console.log(`server listening on ${address}`)
 })

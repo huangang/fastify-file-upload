@@ -9,7 +9,7 @@ const pump = require('pump')
 
 test('upload file use schema', function (t) {
   const fastify = require('fastify')()
-  t.tearDown(fastify.close.bind(fastify))
+  t.teardown(fastify.close.bind(fastify))
 
   fastify.register(require('..'))
 
@@ -62,7 +62,7 @@ test('upload file use schema', function (t) {
 
 test('upload file use schema error', function (t) {
   const fastify = require('fastify')()
-  t.tearDown(fastify.close.bind(fastify))
+  t.teardown(fastify.close.bind(fastify))
 
   fastify.register(require('..'))
 
